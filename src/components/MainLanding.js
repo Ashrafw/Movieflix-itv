@@ -30,7 +30,7 @@ export default function MainLanding() {
         }
         const interval = setInterval(() => {
             setSecond(second + 1);
-            if (ii < 10) {
+            if (ii < 6) {
                 setCount(ii);
                 setIi(ii + 1);
             } else {
@@ -55,7 +55,7 @@ export default function MainLanding() {
                         id='landing'
                         style={{ backgroundImage: `url("${backdropPath}")` }}
                     >
-                        <div className='contain container-m'>
+                        <div className='contain '>
                             <div className='details '>
                                 <div className='image' id='image'>
                                     <img src={posterPath} alt='' srcSet='' />
@@ -75,6 +75,44 @@ export default function MainLanding() {
                                         </p>
                                         <button>More Info</button>
                                     </div>
+                                </div>
+                                <div className='select-movie'>
+                                    <div
+                                        onClick={() => setCount(0)}
+                                        className={
+                                            count === 0 ? 'circle selected' : 'circle'
+                                        }
+                                    ></div>
+                                    <div
+                                        onClick={() => setCount(1)}
+                                        className={
+                                            count === 1 ? 'circle selected' : 'circle'
+                                        }
+                                    ></div>
+                                    <div
+                                        onClick={() => setCount(2)}
+                                        className={
+                                            count === 2 ? 'circle selected' : 'circle'
+                                        }
+                                    ></div>
+                                    <div
+                                        onClick={() => setCount(3)}
+                                        className={
+                                            count === 3 ? 'circle selected' : 'circle'
+                                        }
+                                    ></div>
+                                    <div
+                                        onClick={() => setCount(4)}
+                                        className={
+                                            count === 4 ? 'circle selected' : 'circle'
+                                        }
+                                    ></div>
+                                    <div
+                                        onClick={() => setCount(5)}
+                                        className={
+                                            count === 5 ? 'circle selected' : 'circle'
+                                        }
+                                    ></div>
                                 </div>
                             </div>
                         </div>

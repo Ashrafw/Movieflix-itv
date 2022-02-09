@@ -1,42 +1,78 @@
 .landing-movies {
+    /* display: flex; */
+    /* align-items: center; */
+    /* justify-content: center; */
     display: flex;
-    align-items: center;
-    justify-content: center;
+    align-items: flex-start;
+    justify-content: flex-start;
 }
 .image img {
     width: 200px;
     border-radius: 5px;
     margin: 10px 20px;
+    box-shadow: 2px 4px 4px rgba(255, 255, 255, 0.685);
 }
 .info .overview {
     /* width: 60%; */
     /* margin-left: 30px; */
 }
-.main-landing {
+/* .main-landing {
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    /* max-width: 1900px; */
     margin: auto;
     padding: 0 30px;
-}
+} */
 .content-landing {
-    margin: auto;
-    width: 100%;
-    display: block;
+    /* margin: auto; */
+    /* margin-left: 0; */
+    width: 100vw;
+    /* display: block; */
     /* min-height: 80vh; */
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
+    display: flex;
+    flex-direction: column;
+    /* align-items: ; */
+    justify-content: flex-start;
 }
-.contain {
-    padding: 6rem 0;
+.content-landing .contain {
+    padding: 3em 0;
+    /* margin-left: 0; */
+}
+.select-movie {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    position: absolute;
+    top: 0;
+    left: -8px;
+    height: 100%;
+    width: 2px;
+}
+.select-movie .circle {
+    z-index: 400;
+    height: 16.6%;
+    width: 8px;
+    background-color: #151824e0;
+    transition: all 0.5s cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+.select-movie .circle:hover {
+}
+.select-movie .circle.selected {
+    background-color: rgb(25, 190, 200);
 }
 .details {
-    background-color: rgba(0, 0, 0, 0.6);
-    border-radius: 10px;
-    width: 60%;
-    margin: auto;
+    background-color: rgba(0, 0, 0, 0.75);
+    background-color: #151824a8;
+    background: linear-gradient(90deg, #151824d0, #151824b7, #1518247c, #15182400);
+    box-shadow: 2px 4px 6px rgba(255, 255, 255, 0.26);
+    position: relative;
+
+    margin-left: 10%;
+    /* border-radius: 10px; */
+    width: 55%;
     padding: 2rem;
     display: flex;
     justify-content: center;
@@ -44,7 +80,7 @@
 }
 .cards-section {
     margin-top: 20px;
-    background: linear-gradient(#15182400, #151824);
+    background: linear-gradient(#15182400, #151824b5, #151824cb, #151824);
 }
 
 .main-cards {
@@ -85,7 +121,7 @@ button {
     padding: 1rem 2.8rem;
     margin: 2rem 0;
     font-weight: 700;
-    background-color: #19bec8;
+    background-color: rgb(25, 190, 200);
     border: none;
     border-radius: 5px;
 }
