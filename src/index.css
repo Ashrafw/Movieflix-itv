@@ -1,20 +1,40 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+
 * {
     margin: 0;
     padding: 0;
 }
 .container {
-    max-width: 1800px;
+    max-width: 1820px;
     margin: auto;
 }
 
 body {
-    margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+    background-color: #151824;
+    color: white;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    font-family: 'Lato', sans-serif;
 }
 
 code {
     font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
+
+.container-m {
+    max-width: 1700px;
+    margin: auto;
+}
+hr {
+    /* margin: ; */
+    border: 0;
+    margin: 2.5rem auto;
+    max-width: 80%;
+    background-position: 50%;
+    height: 0.8px;
+    background-image: radial-gradient(
+        closest-side,
+        hsla(0, 0%, 50%, 1),
+        hsla(0, 0%, 50%, 0) 100%
+    );
 }

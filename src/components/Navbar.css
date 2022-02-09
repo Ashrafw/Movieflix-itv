@@ -2,13 +2,33 @@ nav {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    padding: 10px 0;
 }
 
 nav ul {
     list-style: none;
     display: flex;
+    align-items: flex-start;
 }
 
 nav ul li {
-    padding: 0 10px;
+    font-size: 1.23rem;
+    font-weight: 700;
+    padding-top: 5px;
+}
+
+.nav-left li {
+    padding-right: 25px;
+}
+
+.nav-right li {
+    padding-left: 25px;
+}
+.nav-right li i {
+    padding: 0 5px;
+}
+
+nav ul li img {
+    width: 70px;
+    margin-right: 5px;
 }
