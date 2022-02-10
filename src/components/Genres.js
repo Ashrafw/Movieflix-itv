@@ -1,5 +1,7 @@
 import './Genres.css';
 // import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+
 import MovieCards from './MovieCards';
 
 const genreObj = [
@@ -46,12 +48,12 @@ export default function Genres() {
         <>
             <div className='genres' key={section.genre}>
                 <div className='genre-titles'>
-                    <a to={`/movie/genre/${section.id}`}>
+                    <Link to={`/genre/${section.id}`}>
                         {section.genre}
                         <div className='explore'>
                             Explore <i className='fas fa-chevron-right'></i>
                         </div>
-                    </a>
+                    </Link>
                 </div>
                 <div className='posters'>
                     <div className='chevron-left'>

@@ -35,6 +35,43 @@
 .posters {
     position: relative;
 }
+.posters .poster {
+    position: relative;
+}
+.overlay-init {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.8);
+    /* padding: 22px 25px; */
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.overlay-init h3 {
+    padding: 8px;
+}
+.overlay-init h5 {
+    padding: 8px;
+    color: rgb(228, 228, 228);
+}
+.overlay-init p {
+    padding: 8px;
+    color: rgb(194, 194, 194);
+    font-size: 1.1rem;
+    line-height: 1.2;
+}
+
+.posters .poster:hover .overlay-init {
+    opacity: 1;
+}
 
 .posters .posters-section .poster:hover {
     transform: scale(1.02);
@@ -89,7 +126,7 @@
 }
 
 .genres .posters .poster {
-    width: 290px;
+    width: 240px;
 }
 
 .genres .posters .poster img {

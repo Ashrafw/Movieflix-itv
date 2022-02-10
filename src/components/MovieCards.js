@@ -1,7 +1,7 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
 import { useFetch } from '../hooks/useFetch';
-// import OverlayMovie from './OverlayMovie';
+import OverlayMovie from './OverlayMovie';
 export default function MovieCards({ url }) {
     const { data, isPending, error } = useFetch('https://' + url);
     // console.log(url);
@@ -56,6 +56,11 @@ export default function MovieCards({ url }) {
                                 }
                             }}
                         />
+                        <div className='overlay-init'>
+                            <h3>{movie.title}</h3>
+                            <h5>{movie.release_date}</h5>
+                            <p>{movie.overview.substring(0, 300)}</p>
+                        </div>
                         {/* <h3>{movie.title}</h3>
                         <h3>{movie.vote_average}</h3> */}
                     </div>

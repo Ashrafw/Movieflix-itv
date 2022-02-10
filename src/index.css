@@ -25,6 +25,11 @@ code {
     max-width: 1700px;
     margin: auto;
 }
+
+.container-p {
+    max-width: 1500px;
+    margin: auto;
+}
 hr {
     /* margin: ; */
     border: 0;

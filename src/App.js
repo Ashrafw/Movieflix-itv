@@ -1,14 +1,21 @@
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+
 import './App.css';
-import MainLanding from './components/MainLanding';
 import Navbar from './components/Navbar';
-import Genres from './components/Genres';
+
+import Home from './pages/Home';
+import GenrePage from './pages//GenrePage';
+
 function App() {
     return (
         <div className='App'>
             <Navbar />
-            <MainLanding />
-            <hr />
-            <Genres />
+            <BrowserRouter>
+                <Routes>
+                    <Route path='/' element={<Home />} />
+                    <Route path='/genre/:id' element={<GenrePage />} />
+                </Routes>
+            </BrowserRouter>
         </div>
     );
 }
