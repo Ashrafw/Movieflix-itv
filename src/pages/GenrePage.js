@@ -39,7 +39,7 @@ const genreObj = [
     {
         id: '6',
         genre: 'Thriller',
-        url: 'https://api.themoviedb.org/3/discover/movie?with_genres=53&sort_by=popularity.desc&api_key=9c9a236c211df46e640b24f29796b6c0&page=1',
+        url: 'https://api.themoviedb.org/3/discover/movie?with_genres=53&sort_by=popularity.desc&api_key=9c9a236c211df46e640b24f29796b6c0&page=',
     },
 ];
 
@@ -53,6 +53,7 @@ export default function GenrePage() {
     const [date, setDate] = useState('');
     const [overview, setOverview] = useState('');
     const [pageInit, setPageInit] = useState(1);
+    const [totalPages, setTotalPages] = useState(1);
     const { id } = useParams();
 
     const navigate = useNavigate();
@@ -80,6 +81,8 @@ export default function GenrePage() {
             setRate(data.results[count].vote_average);
             setDate(data.results[count].release_date);
             setOverview(data.results[count].overview);
+            // total_pages
+            setTotalPages(data.total_pages - 1 > 500 ? 500 : data.total_pages - 1);
         }
         if (error) {
             setTimeout(() => {
@@ -95,27 +98,28 @@ export default function GenrePage() {
                 <div className='pagination'>
                     <button
                         onClick={() => {
-                            setPageInit((prev) => 1);
+                            setPageInit(1);
+                            setPageNumber(1);
                         }}
                         className={pageNumber === '>' ? 'active-page' : ''}
+                        style={{ display: pageNumber > 9 ? 'block' : 'none' }}
                     >
                         <i class='fa-solid fa-chevron-left'></i>
                         <i class='fa-solid fa-chevron-left'></i>
                     </button>
                     <button
-                        onClick={() =>
-                            setPageInit((prev) => (prev > 3 ? prev - 3 : prev))
-                        }
+                        onClick={() => setPageInit((prev) => (prev < 7 ? 1 : prev - 3))}
                         className={pageNumber === '>>' ? 'active-page' : ''}
+                        style={{ display: pageInit > 1 ? 'block' : 'none' }}
                     >
                         <i class='fa-solid fa-chevron-left'></i>
                     </button>
                     <button
                         onClick={() => {
-                            setPageNumber(pageInit);
-                            if (pageNumber > 3) {
+                            if (pageInit > 3) {
                                 setPageInit((prev) => prev - 3);
                             }
+                            setPageNumber(pageInit);
                         }}
                         className={pageNumber === pageInit ? 'active-page' : ''}
                     >
@@ -153,34 +157,33 @@ export default function GenrePage() {
                     </button>
                     <button
                         onClick={() => {
+                            setPageInit((prev) =>
+                                prev > totalPages - 9 ? prev : prev + 3
+                            );
                             setPageNumber(pageInit + 6);
-                            setPageInit((prev) => prev + 3);
                         }}
                         className={pageNumber === pageInit + 6 ? 'active-page' : ''}
                     >
                         {pageInit + 6}
                     </button>
-                    {/* <button
-                        onClick={() => setPageNumber(pageInit + 6)}
-                        className={pageNumber === pageInit + 6 ? 'active-page' : ''}
-                    >
-                        {pageInit + 6}
-                    </button>
                     <button
-                        onClick={() => setPageNumber(pageInit + 7)}
-                        className={pageNumber === pageInit + 7 ? 'active-page' : ''}
-                    >
-                        {pageInit + 7}
-                    </button> */}
-                    <button
-                        onClick={() => setPageInit((prev) => prev + 8)}
+                        onClick={() =>
+                            setPageInit((prev) =>
+                                prev + 8 > 500 - 6 ? 500 - 6 : prev + 8
+                            )
+                        }
                         className={pageNumber === '>' ? 'active-page' : ''}
+                        style={{ display: pageInit < 500 - 6 ? 'block' : 'none' }}
                     >
                         <i class='fa-solid fa-chevron-right'></i>
                     </button>
                     <button
-                        onClick={() => setPageNumber(8)}
+                        onClick={() => {
+                            // setPageNumber(totalPages);
+                            setPageInit(totalPages - 6);
+                        }}
                         className={pageNumber === '>>' ? 'active-page' : ''}
+                        style={{ display: pageInit < 500 - 9 ? 'block' : 'none' }}
                     >
                         <i class='fa-solid fa-chevron-right'></i>
                         <i class='fa-solid fa-chevron-right'></i>
