@@ -1,0 +1,33 @@
+.genre-page .pagination {
+    /* border-radius: 40px; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: fit-content;
+    margin: 20px auto 50px;
+}
+
+.pagination button {
+    padding: 1.2rem 1.4rem;
+    /* width: 2.2rem;
+    height: 2rem; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0;
+    margin-left: 1px;
+    margin-right: 1px;
+    /* font-size: 1.2rem;
+    font-weight: 600; */
+    /* background-color: rgba(255, 255, 255, 0.1); */
+    /* color: whitesmoke;
+    cursor: pointer; */
+}
+.pagination button:first-child {
+    border-bottom-left-radius: 12px;
+    border-top-left-radius: 12px;
+}
+.pagination button:last-child {
+    border-bottom-right-radius: 12px;
+    border-top-right-radius: 12px;
+}

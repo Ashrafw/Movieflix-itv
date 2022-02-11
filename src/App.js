@@ -5,6 +5,7 @@ import Navbar from './components/Navbar';
 
 import Home from './pages/Home';
 import GenrePage from './pages//GenrePage';
+import WatchMovie from './pages/WatchMovie';
 
 function App() {
     return (
@@ -14,6 +15,7 @@ function App() {
                 <Routes>
                     <Route path='/' element={<Home />} />
                     <Route path='/genre/:id' element={<GenrePage />} />
+                    <Route path='/movie/:id' element={<WatchMovie />} />
                 </Routes>
             </BrowserRouter>
         </div>

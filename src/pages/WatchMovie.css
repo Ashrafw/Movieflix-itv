@@ -1,0 +1,92 @@
+.main-movie {
+    max-width: 1280px;
+    margin: auto;
+    box-shadow: 1px 4px 6px rgba(177, 177, 177, 0.349), 1px 4px 6px rgba(0, 0, 0, 0.349);
+    /* position: relative; */
+}
+
+.main-movie .movie-img {
+    /* height: 80vh; */
+    position: relative;
+}
+.main-movie .movie-img img {
+    width: 100%;
+    /* object-fit: fill; */
+}
+.main-movie .movie-img .play-icon {
+    width: 5.2rem;
+    height: 5.2rem;
+    background-color: #19bec8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    margin: 0;
+    border: 2px solid snow;
+    padding: 0 0 0 0px;
+    position: absolute;
+    top: 50%;
+    box-sizing: border-box;
+    left: 50%;
+    transform: translate(-50%, 50%);
+    cursor: pointer;
+}
+
+.main-movie .movie-img .play-icon i {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    font-size: 2.6rem;
+    margin-left: 4px;
+}
+.main-movie .movie-info {
+    /* background-color: black; */
+    z-index: 99;
+    padding: 20px 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.main-movie .movie-info img {
+    width: 180px;
+    box-shadow: 1px 4px 6px rgba(177, 177, 177, 0.349), 1px 4px 6px rgba(0, 0, 0, 0.349);
+    border-radius: 5px;
+    margin: 4px 32px;
+}
+
+.main-movie .movie-info .movie-info-main {
+    width: 50%;
+    border-right: solid 2px gray;
+}
+.main-movie .movie-info .movie-info-main h1 {
+    padding: 8px 0;
+}
+.main-movie .movie-info .movie-info-main h2 {
+    padding: 4px 0;
+}
+.main-movie .movie-info .movie-info-main h3 {
+    padding: 4px 0;
+}
+.main-movie .movie-info .movie-info-main p {
+    padding: 0px 0;
+    line-height: 1.2;
+    color: rgb(222, 222, 222);
+}
+.main-movie .movie-info .movie-info-main ul {
+    list-style: none;
+    display: flex;
+}
+.main-movie .movie-info .movie-info-main ul li {
+    padding-right: 8px;
+}
+.main-movie .movie-info .movie-info-main ul li::after {
+    content: ',';
+}
+.main-movie .movie-info .movie-info-main ul li:last-child:after {
+    content: '';
+}
+
+.main-movie .movie-info .movie-info-sec {
+    padding: 12px;
+}
