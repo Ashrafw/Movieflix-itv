@@ -11,13 +11,32 @@ export default function WatchMovie() {
     const { data, isPending, error } = useFetch(Url);
     const [imgBackdrop, setImgBackdrop] = useState(null);
     const [imgPoster, setImgPoster] = useState(null);
+    const [rate, setRate] = useState(0);
+    const [starts, setStarts] = useState([]);
+
     useEffect(() => {
         if (data) {
             console.log('hello');
             setImgBackdrop(IMG_URL + data.backdrop_path);
             setImgPoster(IMG_URL + data.poster_path);
+            setRate(Math.floor(data.vote_average / 2));
+            // setRate((prev) => prev / 2);
+            let sizeArr = new Array(rate);
+            console.log(sizeArr);
+            // sizeArr.map((m) => <i class='fa-solid fa-star'></i>);
+            for (let i = 0; i < rate; i++) {
+                sizeArr[i] = <i class='fa-solid fa-star'></i>;
+            }
+            if (rate < 5) {
+                for (let i = sizeArr.length; i < 5; i++) {
+                    sizeArr[i] = <i class='fa-solid fa-star gray'></i>;
+                }
+            }
+
+            setStarts(sizeArr);
+            console.log(starts);
         }
-    }, [isPending, data, error, imgBackdrop]);
+    }, [isPending, rate, data, error, imgBackdrop]);
 
     return (
         <>
@@ -47,9 +66,20 @@ export default function WatchMovie() {
                             </ul>
                         </div>
                         <div className='movie-info-sec'>
+                            {data.adult ? (
+                                <h3>Suitable for Adult</h3>
+                            ) : (
+                                <h3>Suitable for Children</h3>
+                            )}
                             <h3>Release date: {data.release_date}</h3>
-                            <h3>Rating: {data.vote_average}</h3>
+                            <h3>Rating: {rate}</h3>
+                            <ul>
+                                {starts.map((s) => (
+                                    <li>{s}</li>
+                                ))}
+                            </ul>
                             <h3>Runtime: {data.runtime}min</h3>
+                            <h3>Status: {data.status}</h3>
                         </div>
                     </div>
                 </div>
