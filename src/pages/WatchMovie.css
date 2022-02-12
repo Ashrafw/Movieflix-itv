@@ -11,18 +11,17 @@
 }
 .main-movie .movie-img img {
     width: 100%;
+    /* position: relative; */
     /* object-fit: fill; */
 }
+
 .main-movie .movie-img .play-icon {
     width: 5.2rem;
     height: 5.2rem;
-    background-color: #19bec8;
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 50%;
     margin: 0;
-    border: 2px solid snow;
     padding: 0 0 0 0px;
     position: absolute;
     top: 50%;
@@ -31,14 +30,35 @@
     transform: translate(-50%, 100%);
     cursor: pointer;
 }
-
 .main-movie .movie-img .play-icon i {
+    background-color: #19bec8;
+    border: 3px solid snow;
+    margin: auto;
+    /* width: 5rem;
+    height: 5rem; */
+    border-radius: 50%;
+    /* margin: 2.5rem; */
     box-sizing: border-box;
-    padding: 0;
-    margin: 0;
-    font-size: 2.6rem;
+    padding: 1.2rem 1.55rem;
+    /* padding: 2.4rem; */
+    /* margin: 0; */
+    font-size: 3rem;
     margin-left: 4px;
+
+    transition: all 0.4s cubic-bezier(0.445, 0.05, 0.55, 0.95);
 }
+.main-movie .movie-img .play-icon i:hover {
+    border: 3px solid #19bec8;
+
+    transform: scale(1.08);
+    /* outline: 8px solid #19bec8; */
+    /* border: 2px solid #19bec8; */
+}
+
+/* .main-movie .movie-img .play-icon i {
+    
+    margin-left: 4px;
+} */
 .main-movie .movie-info {
     /* background-color: black; */
     z-index: 99;
@@ -46,6 +66,8 @@
     display: flex;
     align-items: flex-start;
     justify-content: center;
+    display: grid;
+    grid-template-columns: 1fr 4fr 2fr;
 }
 
 .main-movie .movie-info img {
@@ -56,7 +78,9 @@
 }
 
 .main-movie .movie-info .movie-info-main {
-    width: 50%;
+    /* width: 50%; */
+    height: 100%;
+    padding: 0px 25px 0 0;
     border-right: solid 2px gray;
 }
 .main-movie .movie-info .movie-info-main h1 {
@@ -88,17 +112,29 @@
 }
 
 .main-movie .movie-info .movie-info-sec {
+    /* height: 100%; */
     padding: 12px;
+}
+.main-movie .movie-info .movie-info-sec img {
+    width: 50px;
+    box-shadow: none;
+    text-align: center;
 }
 .main-movie .movie-info .movie-info-sec h3 {
     font-size: 1.125rem;
     font-weight: 400;
     color: rgb(205, 205, 205);
-    margin: 6px 0;
+    margin: 8px 0;
+}
+.main-movie .movie-info .movie-info-sec h3 span {
+    font-size: 1.125rem;
+    font-weight: 900;
+    color: rgb(255, 255, 255);
 }
 
 .main-movie .movie-info .movie-info-sec ul {
     list-style: none;
+    margin: 8px 0;
     display: flex;
 }
 

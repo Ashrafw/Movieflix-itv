@@ -67,19 +67,24 @@ export default function WatchMovie() {
                         </div>
                         <div className='movie-info-sec'>
                             {data.adult ? (
-                                <h3>Suitable for Adult</h3>
+                                <img src='/images/18.svg' alt='' />
                             ) : (
-                                <h3>Suitable for Children</h3>
+                                <img src='/images/pg.png' alt='' />
                             )}
-                            <h3>Release date: {data.release_date}</h3>
-                            <h3>Rating: {rate}</h3>
                             <ul>
                                 {starts.map((s) => (
                                     <li>{s}</li>
                                 ))}
                             </ul>
-                            <h3>Runtime: {data.runtime}min</h3>
-                            <h3>Status: {data.status}</h3>
+                            <h3>Release date: {data.release_date}</h3>
+                            {/* <h3>Rating: {rate}</h3> */}
+
+                            <h3>
+                                Runtime: <span>{data.runtime}min</span>{' '}
+                            </h3>
+                            <h3>
+                                Status: <span>{data.status}</span>{' '}
+                            </h3>
                         </div>
                     </div>
                 </div>

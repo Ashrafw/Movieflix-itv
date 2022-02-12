@@ -1,8 +1,10 @@
 import React from 'react';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
+
 import { useFetch } from '../hooks/useFetch';
 import OverlayMovie from './OverlayMovie';
-export default function MovieCards({ url }) {
+export default function MovieCards({ url, Gen }) {
     const { data, isPending, error } = useFetch('https://' + url);
     // console.log(url);
     const IMG_URL = 'https://image.tmdb.org/t/p/w1280';
@@ -16,6 +18,7 @@ export default function MovieCards({ url }) {
     const [count, setCount] = useState(1);
     const [clickedValue, setClickedValue] = useState(false);
     const [clickedId, setClickedId] = useState('');
+    const navigate = useNavigate();
 
     useEffect(() => {
         if (data) {
@@ -27,8 +30,12 @@ export default function MovieCards({ url }) {
             setOverview(data.results[count].overview);
         }
     }, [data, count, isPending, error]);
+
+    const handleOnClick = (info) => {
+        navigate(`/movie/${info}`);
+    };
     return (
-        <div className='posters-section'>
+        <>
             {error && <h1>{error}</h1>}
             {isPending && <h1>Loading...</h1>}
             {data &&
@@ -56,15 +63,19 @@ export default function MovieCards({ url }) {
                                 }
                             }}
                         />
-                        <div className='overlay-init'>
+                        <div
+                            className='overlay-init'
+                            onClick={() => handleOnClick(movie.id)}
+                        >
                             <h3>{movie.title}</h3>
                             <h5>{movie.release_date}</h5>
-                            <p>{movie.overview.substring(0, 300)}</p>
+                            <p>{movie.overview.substring(0, 200)}</p>
+                            <p>Click for more...</p>
                         </div>
                         {/* <h3>{movie.title}</h3>
                         <h3>{movie.vote_average}</h3> */}
                     </div>
                 ))}
-        </div>
+        </>
     );
 }
