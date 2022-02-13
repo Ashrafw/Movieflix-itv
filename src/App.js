@@ -6,6 +6,7 @@ import Navbar from './components/Navbar';
 import Home from './pages/Home';
 import GenrePage from './pages//GenrePage';
 import WatchMovie from './pages/WatchMovie';
+import Search from './pages/Search';
 
 function App() {
     return (
@@ -16,6 +17,7 @@ function App() {
                     <Route path='/' element={<Home />} />
                     <Route path='/genre/:id' element={<GenrePage />} />
                     <Route path='/movie/:id' element={<WatchMovie />} />
+                    <Route path='/search/:searchid' element={<Search />} />
                 </Routes>
             </BrowserRouter>
         </div>

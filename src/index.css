@@ -5,6 +5,7 @@
     padding: 0;
 }
 .container {
+    background-color: #151824;
     max-width: 1820px;
     margin: auto;
 }
@@ -15,6 +16,7 @@ body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     font-family: 'Lato', sans-serif;
+    z-index: 1;
 }
 
 code {
