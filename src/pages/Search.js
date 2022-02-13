@@ -4,6 +4,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { useFetch } from '../hooks/useFetch';
 // import OverlayMovie from '../../components/OverlayMovie';
 import './GenrePage.css';
+import Pagination from '../components/Pagination';
 
 const SEARCH_URL =
     'https://api.themoviedb.org/3/search/movie?api_key=9c9a236c211df46e640b24f29796b6c0&query=';
@@ -13,7 +14,6 @@ export default function Search() {
     const { searchid } = useParams();
 
     const IMG_URL = 'https://image.tmdb.org/t/p/w1280';
-    // const [pageNumber, setPageNumber] = useState(1);
 
     const [selectedGenreUrl, setSelectedGenreUrl] = useState(SEARCH_URL + searchid);
     const [title, setTitle] = useState('');
@@ -26,16 +26,17 @@ export default function Search() {
     const [clickedId, setClickedId] = useState('');
     const navigate = useNavigate();
     const [count, setCount] = useState(1);
-    // const [totalPageNumberUrl, setTotalPageNumberUrl] = useState(1);
-    // const [totalPageNumber, setTotalPageNumber] = useState(1);
-    // const [steps, setSteps] = useState([]);
+
+    const [pageNumber, setPageNumber] = useState(1);
+    const [pageInit, setPageInit] = useState(1);
+    const [totalPages, setTotalPages] = useState(1);
     const { data, isPending, error } = useFetch(selectedGenreUrl);
     // console.log(selectedGenreUrl);
     useEffect(() => {
         // setSelectedGenreUrl(list.url + '&page=' + pageNumber);
-
+        setSelectedGenreUrl(SEARCH_URL + searchid + '&page=' + pageNumber);
+        console.log(selectedGenreUrl);
         if (data) {
-            // setSelectedGenreUrl(SEARCH_URL + searchid + '&page=' + pageNumber);
             setTitle(data.results[count].title);
             setPosterPath(IMG_URL + data.results[count].poster_path);
             setBackdropPath(IMG_URL + data.results[count].backdrop_path);
@@ -43,23 +44,31 @@ export default function Search() {
             setDate(data.results[count].release_date);
             setOverview(data.results[count].overview);
             // setTotalPageNumberUrl(data.total_pages);
+            setTotalPages(data.total_pages > 500 ? 500 : data.total_pages);
         }
         if (error) {
             setTimeout(() => {
                 navigate('/movie');
             }, 2000);
         }
-    }, [searchid, data, error, count, navigate]);
+    }, [searchid, data, error, count, navigate, pageNumber]);
     const handleOnClick = (info) => {
         navigate(`/movie/${info}`);
     };
 
     return (
-        <div className='genre-page'>
+        <div className='genre-page container-s'>
             <div className='genre-page-info searchId'>
                 <h1>
                     Search result for: <span>{searchid}</span>
                 </h1>
+                <Pagination
+                    pageNumber={pageNumber}
+                    setPageNumber={setPageNumber}
+                    pageInit={pageInit}
+                    setPageInit={setPageInit}
+                    totalPages={totalPages}
+                />
             </div>
 
             <div className='genre-section'>
@@ -67,7 +76,7 @@ export default function Search() {
                 {error && <div>{error}</div>}
                 {data &&
                     data.results.map((movie) => (
-                        <div className='movie' key={movie.title}>
+                        <div className='movie' key={movie.id}>
                             {/* <OverlayMovie
                                 title={movie.title}
                                 date={movie.release_date}

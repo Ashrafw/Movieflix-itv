@@ -1,45 +1,49 @@
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useState, useRef, useEffect } from 'react';
+import { useNavigate, Link } from 'react-router-dom';
 import './Navbar.css';
 export default function Navbar() {
     const [searchInput, setSearchInput] = useState('');
     const [term, setTerm] = useState('');
     const [showClass, setShowClass] = useState(false);
-    // const navigate = useNavigate();
+    const navigate = useNavigate();
+    const searchInputFocus = useRef();
 
     const handleSubmit = (e) => {
-        e.preventDefault();
-        // setShowClass((prev) => (prev === true ? false : true));
-        // navigate(`/search/${term}`);
+        navigate(`/search/${term}`);
     };
+
     return (
         <div className='navbar'>
             <nav className='container'>
                 <ul className='nav-left'>
-                    <li>
-                        <img src='images/itv-emblem.png' alt='' srcset='' />
-                    </li>
-                    <li>Watch Live</li>
-                    <li>Full Series</li>
-                    <li>Shows</li>
-                    <li>Categories</li>
-                    <li>News</li>
+                    <Link to='/' className='logo-site'>
+                        {/* <img src='images/itv-emblem.png' alt='' srcset='' /> */}
+                        Movie<span>Flix</span>
+                    </Link>
+                    <Link to='/'>TV shows</Link>
+                    <Link to='/genre/1'>Action</Link>
+                    <Link to='/genre/2'>Drama</Link>
+                    <Link to='/genre/3'>Crime</Link>
+                    <Link to='/genre/5'>Romance</Link>
+                    <Link to='/genre/6'>Thriller</Link>
+                    <Link to='/genre/4'>Kids</Link>
                 </ul>
                 <ul className='nav-right'>
-                    <li>britbox</li>
-                    <li>watch ad-free now</li>
-                    <li>
+                    {/* <Link to='/'>britbox</Link>
+                    <Link to='/'>watch ad-free now</Link> */}
+                    <Link to='/'>
                         {' '}
                         Sign In <i class='fas fa-user-circle '></i>
-                    </li>
-                    <li className={showClass ? 'show' : ''}>
-                        <i
-                            class={`fas fa-search `}
-                            onClick={() =>
-                                setShowClass((prev) => (prev === true ? false : true))
-                            }
-                        ></i>
-                    </li>
+                    </Link>
+                    <a
+                        className={showClass ? 'show' : ''}
+                        onClick={() => {
+                            setShowClass((prev) => (prev === true ? false : true));
+                            // () => searchInputSet();
+                        }}
+                    >
+                        <i class={`fas fa-search `}></i>
+                    </a>
                 </ul>
             </nav>
 
@@ -52,7 +56,14 @@ export default function Navbar() {
                     placeholder='Search for movies...'
                     id='search'
                     onChange={(e) => setTerm(e.target.value)}
+                    autoFocus
+                    onFocus={(e) => e.currentTarget.select()}
                     required
+                    ref={(inputElement) => {
+                        if (inputElement && showClass) {
+                            inputElement.focus();
+                        }
+                    }}
                 />
             </form>
         </div>

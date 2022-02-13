@@ -129,7 +129,8 @@ span {
 .genre-page-info.searchId h1 span {
     font-style: italic;
     font-size: 2rem;
-    color: red;
+    font-weight: 900;
+    color: #19bec8;
     margin-left: 4px;
 }
 
