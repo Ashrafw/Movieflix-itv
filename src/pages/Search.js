@@ -49,7 +49,7 @@ export default function Search() {
         }
         if (error) {
             setTimeout(() => {
-                navigate('/itv-website/movie');
+                navigate('/itv-website/');
             }, 2000);
         }
     }, [searchid, data, error, count, navigate, pageNumber]);
@@ -60,16 +60,22 @@ export default function Search() {
     return (
         <div className='genre-page container-s'>
             <div className='genre-page-info searchId'>
-                <h1>
-                    Search result for: <span>{searchid}</span>
-                </h1>
-                <Pagination
-                    pageNumber={pageNumber}
-                    setPageNumber={setPageNumber}
-                    pageInit={pageInit}
-                    setPageInit={setPageInit}
-                    totalPages={totalPages}
-                />
+                {isPending && <div>Loading...</div>}
+                {error && <div>{error}</div>}
+                {data && (
+                    <>
+                        <h1>
+                            Search result for: <span>{searchid}</span>
+                        </h1>
+                        <Pagination
+                            pageNumber={pageNumber}
+                            setPageNumber={setPageNumber}
+                            pageInit={pageInit}
+                            setPageInit={setPageInit}
+                            totalPages={totalPages}
+                        />
+                    </>
+                )}
             </div>
 
             <div className='genre-section'>
