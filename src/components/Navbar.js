@@ -31,7 +31,7 @@ export default function Navbar() {
                 <ul className='nav-right'>
                     {/* <Link to='/'>britbox</Link>
                     <Link to='/'>watch ad-free now</Link> */}
-                    <Link to='itv-website//'>
+                    <Link to='/itv-website/'>
                         {' '}
                         Sign In <i className='fas fa-user-circle '></i>
                     </Link>
