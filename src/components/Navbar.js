@@ -9,7 +9,7 @@ export default function Navbar() {
     const searchInputFocus = useRef();
 
     const handleSubmit = (e) => {
-        navigate(`/search/${term}`);
+        navigate(`/itv-website/search/${term}`);
     };
 
     return (
