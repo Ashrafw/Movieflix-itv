@@ -49,7 +49,7 @@ export default function Search() {
         }
         if (error) {
             setTimeout(() => {
-                navigate('/itv-website/');
+                navigate('/itv-website');
             }, 2000);
         }
     }, [searchid, data, error, count, navigate, pageNumber]);

@@ -1,6 +1,6 @@
 {
-    "homepage": "https://Ashrafw.github.io/itv-website",
     "name": "itv-website-react",
+    "homepage": "https://Ashrafw.github.io/itv-website",
     "version": "0.1.0",
     "private": true,
     "dependencies": {

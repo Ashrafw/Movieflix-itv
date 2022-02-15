@@ -15,7 +15,7 @@ function App() {
             <BrowserRouter>
                 <Navbar />
                 <Routes>
-                    <Route path='/itv-website/' element={<Home />} />
+                    <Route path='/itv-website' element={<Home />} />
                     <Route path='/itv-website/genre/:id' element={<GenrePage />} />
                     <Route path='/itv-website/movie/:id' element={<WatchMovie />} />
                     <Route path='/itv-website/search/:searchid' element={<Search />} />
