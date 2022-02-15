@@ -1,9 +1,9 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import React from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useFetch } from '../hooks/useFetch';
 // import OverlayMovie from '../../components/OverlayMovie';
-
+import uuid from 'react-uuid';
 import './GenrePage.css';
 import Pagination from '../components/Pagination';
 const genreObj = [
@@ -114,7 +114,7 @@ export default function GenrePage() {
                 {error && <div>{error}</div>}
                 {data &&
                     data.results.map((movie) => (
-                        <div className='movie' key={movie.title}>
+                        <div className='movie' key={uuid()}>
                             {/* <OverlayMovie
                                 title={movie.title}
                                 date={movie.release_date}

@@ -33,7 +33,7 @@ export default function Navbar() {
                     <Link to='/'>watch ad-free now</Link> */}
                     <Link to='/'>
                         {' '}
-                        Sign In <i class='fas fa-user-circle '></i>
+                        Sign In <i className='fas fa-user-circle '></i>
                     </Link>
                     <a
                         className={showClass ? 'show' : ''}
@@ -42,7 +42,7 @@ export default function Navbar() {
                             // () => searchInputSet();
                         }}
                     >
-                        <i class={`fas fa-search `}></i>
+                        <i className={`fas fa-search `}></i>
                     </a>
                 </ul>
             </nav>

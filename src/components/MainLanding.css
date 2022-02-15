@@ -36,7 +36,7 @@
     flex-direction: column;
     /* align-items: ; */
     justify-content: flex-start;
-    transition: all 0.9s ease-in-out;
+    transition: all 0.6s ease-in-out;
 }
 .content-landing .contain {
     padding: 3em 0;
@@ -61,7 +61,7 @@
     height: 16.6%;
     width: 14px;
     background-color: rgba(21, 24, 36, 0.7);
-    transition: all 0.9s ease-in-out;
+    transition: all 0.6s ease-in-out;
     z-index: 3;
     cursor: pointer;
     box-shadow: 2px 4px 6px rgba(255, 255, 255, 0.26);
@@ -77,17 +77,37 @@
 .details {
     background-color: rgba(0, 0, 0, 0.75);
     background-color: #151824a8;
-    background: linear-gradient(90deg, #151824d0, #151824b7, #1518247c, #15182400);
+    background: linear-gradient(
+        90deg,
+        rgba(21, 24, 36, 0.816),
+        rgba(21, 24, 36, 0.718),
+        rgba(21, 24, 36, 0.6),
+        rgba(21, 24, 36, 0.4)
+    );
+
     box-shadow: 2px 4px 6px rgba(255, 255, 255, 0.26);
     position: relative;
     z-index: 10;
-    margin-left: 10%;
+    /* margin-left: 10%; */
     /* border-radius: 10px; */
-    width: 55%;
+    margin: auto;
+    width: 60%;
     padding: 2rem;
     display: flex;
     justify-content: center;
     align-items: center;
+    transition: all 0.6s ease;
+}
+.details:hover {
+    background: linear-gradient(
+        90deg,
+        rgba(21, 24, 36, 1),
+        rgba(21, 24, 36, 0.85),
+        rgba(21, 24, 36, 0.8),
+        rgba(21, 24, 36, 0.7)
+    );
+    box-shadow: 2px 4px 6px rgba(255, 255, 255, 0.61),
+        2px 4px 6px rgba(25, 191, 200, 0.68);
 }
 .cards-section {
     margin-top: 20px;
@@ -107,14 +127,37 @@
 
 .main-cards .card {
     position: relative;
-    transition: all 0.8s ease;
+    transition: all 0.6s ease;
+    cursor: pointer;
 }
+.main-cards .card .overlay-init h3 {
+    font-size: 1.45rem;
+    /* padding: 8px; */
+}
+.main-cards .card .overlay-init h5 {
+    /* padding: 8px; */
+    font-size: 1rem;
+    color: rgb(255, 255, 255);
+}
+.main-cards .card .overlay-init p {
+    /* padding: 8px; */
+    color: rgb(194, 194, 194);
+    font-size: 1.1rem;
+    line-height: 1.2;
+}
+
+.main-cards .card:hover .overlay-init {
+    box-shadow: 1px 3px 6px rgba(255, 255, 255, 0.685), 2px 3px 6px #19bfc8b6;
+    opacity: 1;
+    z-index: 99;
+}
+
 .main-cards .card::before {
     content: '';
     position: absolute;
     left: -3px;
     height: 0%;
-    transition: all 0.8s ease;
+    transition: all 0.6s ease;
     width: 3px;
     background-color: #19bec8;
 }

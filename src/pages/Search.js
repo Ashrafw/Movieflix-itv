@@ -5,6 +5,7 @@ import { useFetch } from '../hooks/useFetch';
 // import OverlayMovie from '../../components/OverlayMovie';
 import './GenrePage.css';
 import Pagination from '../components/Pagination';
+import uuid from 'react-uuid';
 
 const SEARCH_URL =
     'https://api.themoviedb.org/3/search/movie?api_key=9c9a236c211df46e640b24f29796b6c0&query=';
@@ -76,7 +77,7 @@ export default function Search() {
                 {error && <div>{error}</div>}
                 {data &&
                     data.results.map((movie) => (
-                        <div className='movie' key={movie.id}>
+                        <div className='movie' key={uuid()}>
                             {/* <OverlayMovie
                                 title={movie.title}
                                 date={movie.release_date}

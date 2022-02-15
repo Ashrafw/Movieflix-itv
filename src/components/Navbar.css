@@ -11,7 +11,7 @@ nav {
     align-items: center;
     justify-content: space-between;
     flex-wrap: wrap;
-    height: 8vh;
+    height: 6vh;
     padding: 0;
     margin: 0;
     /* padding: 10px 0; */
@@ -59,7 +59,7 @@ nav ul a:hover {
 }
 
 .nav-right a {
-    transition: all 0.5s ease-in;
+    transition: background-color 0.5s ease-in;
     padding: 0 14px;
 }
 .nav-right a i {
@@ -102,22 +102,21 @@ nav ul a img {
     display: flex;
     align-items: center;
     justify-content: center;
-    /* display: none; */
     transform: translateY(100%);
-
     opacity: 0;
     z-index: -99;
-    transition: all 0.5s ease-in;
+    transition: opacity 0.5s ease-in;
 }
 
 .navbar form.show {
     opacity: 1;
-    /* display: block; */
-    /* z-index: 1; */
 }
 .navbar form input {
     font-size: 1rem;
     padding: 8px 16px;
     border: none;
     min-width: 980px;
+}
+.navbar form input:focus {
+    outline: none;
 }

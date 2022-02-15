@@ -1,10 +1,10 @@
 import React from 'react';
 import { useState, useEffect, useRef } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-
+import uuid from 'react-uuid';
 import { useFetch } from '../hooks/useFetch';
 import OverlayMovie from './OverlayMovie';
-export default function MovieCards({ url, Gen }) {
+export default function MovieCards({ url }) {
     const { data, isPending, error } = useFetch('https://' + url);
     // console.log(url);
     const IMG_URL = 'https://image.tmdb.org/t/p/w1280';
@@ -19,6 +19,7 @@ export default function MovieCards({ url, Gen }) {
     const [clickedValue, setClickedValue] = useState(false);
     const [clickedId, setClickedId] = useState('');
     const navigate = useNavigate();
+    // const widthRef = useRef(null);
 
     useEffect(() => {
         if (data) {
@@ -39,16 +40,8 @@ export default function MovieCards({ url, Gen }) {
             {error && <h1>{error}</h1>}
             {isPending && <h1>Loading...</h1>}
             {data &&
-                data.results.slice(0, 16).map((movie) => (
-                    <div className='poster' key={movie.title}>
-                        {/* <OverlayMovie
-                            title={movie.title}
-                            date={movie.release_date}
-                            overview={movie.overview.substring(0, 300)}
-                            clickedValue={clickedValue}
-                            setClickedValue={setClickedValue}
-                            info={clickedId === movie.title ? true : false}
-                        /> */}
+                data.results.map((movie) => (
+                    <div className='poster' key={uuid()}>
                         <img
                             src={IMG_URL + movie.poster_path}
                             alt=''
@@ -72,8 +65,6 @@ export default function MovieCards({ url, Gen }) {
                             <p>{movie.overview.substring(0, 200)}</p>
                             <p>Click for more...</p>
                         </div>
-                        {/* <h3>{movie.title}</h3>
-                        <h3>{movie.vote_average}</h3> */}
                     </div>
                 ))}
         </>

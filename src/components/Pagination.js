@@ -18,15 +18,15 @@ export default function Pagination({
                 className={pageNumber === '>' ? 'active-page' : ''}
                 style={{ display: pageNumber > 9 ? 'block' : 'none' }}
             >
-                <i class='fa-solid fa-chevron-left'></i>
-                <i class='fa-solid fa-chevron-left'></i>
+                <i className='fa-solid fa-chevron-left'></i>
+                <i className='fa-solid fa-chevron-left'></i>
             </button>
             <button
                 onClick={() => setPageInit((prev) => (prev < 7 ? 1 : prev - 3))}
                 className={pageNumber === '>>' ? 'active-page' : ''}
                 style={{ display: pageInit > 1 ? 'block' : 'none' }}
             >
-                <i class='fa-solid fa-chevron-left'></i>
+                <i className='fa-solid fa-chevron-left'></i>
             </button>
             <button
                 onClick={() => {
@@ -85,7 +85,7 @@ export default function Pagination({
                 className={pageNumber === '>' ? 'active-page' : ''}
                 style={{ display: pageInit < 500 - 6 ? 'block' : 'none' }}
             >
-                <i class='fa-solid fa-chevron-right'></i>
+                <i className='fa-solid fa-chevron-right'></i>
             </button>
             <button
                 onClick={() => {
@@ -95,8 +95,8 @@ export default function Pagination({
                 className={pageNumber === '>>' ? 'active-page' : ''}
                 style={{ display: pageInit < 500 - 9 ? 'block' : 'none' }}
             >
-                <i class='fa-solid fa-chevron-right'></i>
-                <i class='fa-solid fa-chevron-right'></i>
+                <i className='fa-solid fa-chevron-right'></i>
+                <i className='fa-solid fa-chevron-right'></i>
             </button>
         </div>
     );

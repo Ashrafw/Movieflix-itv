@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useFetch } from '../hooks/useFetch';
-
+import uuid from 'react-uuid';
 import './WatchMovie.css';
 
 export default function WatchMovie() {
@@ -43,7 +43,7 @@ export default function WatchMovie() {
             {isPending && <div>Loading...</div>}
             {error && <div>{error}</div>}
             {data && (
-                <div className='main-movie'>
+                <div className='main-movie' key={uuid()}>
                     <div className='movie-img'>
                         <img src={imgBackdrop} alt='' />
                         <div className='play-icon'>
