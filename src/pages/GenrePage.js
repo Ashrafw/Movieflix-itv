@@ -87,13 +87,13 @@ export default function GenrePage() {
         }
         if (error) {
             setTimeout(() => {
-                navigate('/genre');
+                navigate('/itv-website/genre');
             }, 2000);
         }
     }, [id, data, error, pageNumber, navigate, count]);
 
     const handleOnClick = (info) => {
-        navigate(`/movie/${info}`);
+        navigate(`/itv-website/movie/${info}`);
     };
 
     return (
