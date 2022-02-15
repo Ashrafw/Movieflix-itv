@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/itv-website/static/css/main.1241d651.css",
-    "main.js": "/itv-website/static/js/main.a3b35bf8.js",
+    "main.js": "/itv-website/static/js/main.9a3a1d36.js",
     "index.html": "/itv-website/index.html",
     "main.1241d651.css.map": "/itv-website/static/css/main.1241d651.css.map",
-    "main.a3b35bf8.js.map": "/itv-website/static/js/main.a3b35bf8.js.map"
+    "main.9a3a1d36.js.map": "/itv-website/static/js/main.9a3a1d36.js.map"
   },
   "entrypoints": [
     "static/css/main.1241d651.css",
-    "static/js/main.a3b35bf8.js"
+    "static/js/main.9a3a1d36.js"
   ]
 }
