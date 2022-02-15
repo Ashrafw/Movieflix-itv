@@ -33,7 +33,7 @@ export default function MovieCards({ url }) {
     }, [data, count, isPending, error]);
 
     const handleOnClick = (info) => {
-        navigate(`/movie/${info}`);
+        navigate(`/itv-website/movie/${info}`);
     };
     return (
         <>

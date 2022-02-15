@@ -16,22 +16,22 @@ export default function Navbar() {
         <div className='navbar'>
             <nav className='container'>
                 <ul className='nav-left'>
-                    <Link to='/' className='logo-site'>
+                    <Link to='/itv-website/' className='logo-site'>
                         {/* <img src='images/itv-emblem.png' alt='' srcset='' /> */}
                         Movie<span>Flix</span>
                     </Link>
-                    <Link to='/'>TV shows</Link>
-                    <Link to='/genre/1'>Action</Link>
-                    <Link to='/genre/2'>Drama</Link>
-                    <Link to='/genre/3'>Crime</Link>
-                    <Link to='/genre/5'>Romance</Link>
-                    <Link to='/genre/6'>Thriller</Link>
-                    <Link to='/genre/4'>Kids</Link>
+                    <Link to='/itv-website/'>TV shows</Link>
+                    <Link to='/itv-website/genre/1'>Action</Link>
+                    <Link to='/itv-website/genre/2'>Drama</Link>
+                    <Link to='/itv-website/genre/3'>Crime</Link>
+                    <Link to='/itv-website/genre/5'>Romance</Link>
+                    <Link to='/itv-website/genre/6'>Thriller</Link>
+                    <Link to='/itv-website/genre/4'>Kids</Link>
                 </ul>
                 <ul className='nav-right'>
                     {/* <Link to='/'>britbox</Link>
                     <Link to='/'>watch ad-free now</Link> */}
-                    <Link to='/'>
+                    <Link to='itv-website//'>
                         {' '}
                         Sign In <i className='fas fa-user-circle '></i>
                     </Link>

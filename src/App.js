@@ -15,10 +15,10 @@ function App() {
             <BrowserRouter>
                 <Navbar />
                 <Routes>
-                    <Route path='/' element={<Home />} />
-                    <Route path='/genre/:id' element={<GenrePage />} />
-                    <Route path='/movie/:id' element={<WatchMovie />} />
-                    <Route path='/search/:searchid' element={<Search />} />
+                    <Route path='/itv-website/' element={<Home />} />
+                    <Route path='/itv-website/genre/:id' element={<GenrePage />} />
+                    <Route path='/itv-website/movie/:id' element={<WatchMovie />} />
+                    <Route path='/itv-website/search/:searchid' element={<Search />} />
                 </Routes>
                 <Footer />
             </BrowserRouter>

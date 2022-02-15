@@ -57,7 +57,7 @@ export default function MainLanding() {
     }, [data, count, second, isPending, error, isShown]);
 
     const handleOnClick = (info) => {
-        navigate(`/movie/${info}`);
+        navigate(`/itv-website/movie/${info}`);
     };
     return (
         <div className='main-landing'>
