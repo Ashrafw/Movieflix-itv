@@ -1,13 +1,12 @@
-import { useState, useEffect, useCallback } from 'react';
 import React from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useState, useEffect, useCallback } from 'react';
 import { useFetch } from '../hooks/useFetch';
-// import OverlayMovie from '../../components/OverlayMovie';
+import { useParams, useNavigate } from 'react-router-dom';
 import uuid from 'react-uuid';
-import './GenrePage.css';
-import _Poster from '../assets/poster.png';
 import _Backdrop from '../assets/backdrop.png';
-import Pagination from '../components/Pagination';
+import _Poster from '../assets/poster.png';
+import './Suggestions.css';
+
 const genreObj = [
     {
         id: '0',
@@ -49,9 +48,14 @@ const genreObj = [
         genre: 'Comedy',
         url: 'https://api.themoviedb.org/3/discover/movie?with_genres=35&sort_by=popularity.desc&api_key=9c9a236c211df46e640b24f29796b6c0&page=',
     },
-];
 
-export default function GenrePage() {
+    {
+        id: '8',
+        genre: 'Music',
+        url: 'https://api.themoviedb.org/3/discover/movie?with_genres=10402&sort_by=popularity.desc&api_key=9c9a236c211df46e640b24f29796b6c0&page=',
+    },
+];
+export default function Suggestions({ movieGenre }) {
     const IMG_URL = 'https://image.tmdb.org/t/p/w1280';
     const [selectedGenreUrl, setSelectedGenreUrl] = useState('');
     const [title, setTitle] = useState('');
@@ -60,9 +64,7 @@ export default function GenrePage() {
     const [rate, setRate] = useState('');
     const [date, setDate] = useState('');
     const [overview, setOverview] = useState('');
-    const [pageInit, setPageInit] = useState(1);
     const [totalPages, setTotalPages] = useState(1);
-    const { id } = useParams();
 
     const navigate = useNavigate();
     const [count, setCount] = useState(1);
@@ -73,12 +75,12 @@ export default function GenrePage() {
     const { data, isPending, error } = useFetch(selectedGenreUrl);
     const [clickedValue, setClickedValue] = useState(false);
     const [clickedId, setClickedId] = useState('');
+
     useEffect(() => {
         genreObj.map((list) => {
-            if (list.id === id) {
-                // console.log('printf= ', list.url);
+            if (list.genre === movieGenre) {
                 setSelectedGenreUrl(list.url + pageNumber);
-                // console.log(list);
+                console.log(list.url, movieGenre);
                 setGenreName(list.genre);
             }
         });
@@ -95,32 +97,19 @@ export default function GenrePage() {
         if (error) {
             setTimeout(() => {
                 navigate('/itv-website/');
-            }, 2000);
+            }, 3000);
         }
-    }, [id, data, error, pageNumber, navigate, count]);
-
+    }, [movieGenre, data, error, pageNumber, navigate, count]);
     const handleOnClick = (info) => {
         navigate(`/itv-website/movie/${info}`);
     };
 
     return (
-        <div className='genre-page container-p'>
-            <div className='genre-page-info'>
-                <h1>{genreName}</h1>
-                <Pagination
-                    pageNumber={pageNumber}
-                    setPageNumber={setPageNumber}
-                    pageInit={pageInit}
-                    setPageInit={setPageInit}
-                    totalPages={totalPages}
-                />
-            </div>
-
-            <div className='genre-section'>
-                {isPending && <div>Loading...</div>}
-                {error && <div>{error}</div>}
+        <div className='suggestions'>
+            <h1>More {movieGenre} movies</h1>
+            <div className='suggestion-movies'>
                 {data &&
-                    data.results.map((movie) => (
+                    data.results.slice(0, 10).map((movie) => (
                         <div className='movie' key={uuid()}>
                             {/* <OverlayMovie
                                 title={movie.title}
@@ -149,18 +138,18 @@ export default function GenrePage() {
                                 }}
                             />
                             {/* <img src='/images/poster.png' alt='' srcSet='' /> */}
-                            <div
-                                className='overlay-init'
-                                onClick={() => {
-                                    console.log(movie.poster_path);
-                                    handleOnClick(movie.id);
-                                }}
-                            >
-                                <h3>{movie.title}</h3>
-                                <h5>{movie.release_date}</h5>
-                                <p>{movie.overview.substring(0, 300)}</p>
-                                <h5>Click for more...</h5>
-                            </div>
+                            {/* <div
+                            className='overlay-init'
+                            onClick={() => {
+                                console.log(movie.poster_path);
+                                handleOnClick(movie.id);
+                            }}
+                        >
+                            <h3>{movie.title}</h3>
+                            <h5>{movie.release_date}</h5>
+                            <p>{movie.overview.substring(0, 300)}</p>
+                            <h5>Click for more...</h5>
+                        </div> */}
                             <div className='movie-info'>
                                 <h5>{movie.title}</h5>
                                 <div className='movie-info-sec'>
@@ -171,13 +160,6 @@ export default function GenrePage() {
                         </div>
                     ))}
             </div>
-            <Pagination
-                pageNumber={pageNumber}
-                setPageNumber={setPageNumber}
-                pageInit={pageInit}
-                setPageInit={setPageInit}
-                totalPages={totalPages}
-            />
         </div>
     );
 }

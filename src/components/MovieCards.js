@@ -4,6 +4,8 @@ import { useParams, useNavigate } from 'react-router-dom';
 import uuid from 'react-uuid';
 import { useFetch } from '../hooks/useFetch';
 import OverlayMovie from './OverlayMovie';
+import _Poster from '../assets/poster.png';
+import _Backdrop from '../assets/backdrop.png';
 export default function MovieCards({ url }) {
     const { data, isPending, error } = useFetch('https://' + url);
     // console.log(url);
@@ -43,7 +45,11 @@ export default function MovieCards({ url }) {
                 data.results.map((movie) => (
                     <div className='poster' key={uuid()}>
                         <img
-                            src={IMG_URL + movie.poster_path}
+                            src={
+                                movie.poster_path === null
+                                    ? _Poster
+                                    : IMG_URL + movie.poster_path
+                            }
                             alt=''
                             srcSet=''
                             onClick={(e) => {
@@ -58,7 +64,9 @@ export default function MovieCards({ url }) {
                         />
                         <div
                             className='overlay-init'
-                            onClick={() => handleOnClick(movie.id)}
+                            onClick={() => {
+                                handleOnClick(movie.id);
+                            }}
                         >
                             <h3>{movie.title}</h3>
                             <h5>{movie.release_date}</h5>

@@ -4,8 +4,6 @@ import { Link } from 'react-router-dom';
 import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 
 import MovieCards from './MovieCards';
-import useSliding from '../hooks/useSliding';
-import useSizeElement from '../hooks/useSizeElement';
 
 const genreObj = [
     {
@@ -108,27 +106,23 @@ export default function Genres() {
             setContainerWidth(containerWidth);
             setTotalInViewport(Math.floor(containerWidth / 240));
         }
-        // console.log(containerWidth);
-        // console.log(viewed);
-        // console.log(distance);
-        // console.log(containerWidth);
-    }, [containerRef.current]);
+    }, [containerRef.current, event]);
 
     const handlePrev = (e) => {
-        // if (e) {
-        //     setViewed(viewed - totalInViewport);
-        //     setDistance(containerWidth);
-        //     console.log(viewed, distance);
-        // }
-        console.log(event);
-
         setEvent((prevEvent) => {
             return prevEvent.filter((event) => {
                 if (event.genre === e && event.translation + containerWidth < 1) {
                     setViewed(viewed - totalInViewport);
                     setDistance(containerWidth);
-                    event.translation = event.translation + distance;
-                    console.log(event.genre);
+                    event.translation = event.translation + containerWidth;
+                    return event;
+                } else if (
+                    event.genre === e &&
+                    event.translation + containerWidth > 0 &&
+                    event.translation < 0
+                ) {
+                    event.translation = event.translation - event.translation;
+
                     return event;
                 } else {
                     return event;
@@ -138,38 +132,18 @@ export default function Genres() {
     };
 
     const handleNext = (e) => {
-        console.log(event);
-        // if (e) {
-        //     console.log('distance: ', distance);
-        //     console.log('totalInViewport: ', totalInViewport);
-        //     console.log('viewed: ', viewed);
-        //     console.log('width: ', width);
-        // }
         setEvent((prevEvent) => {
             return prevEvent.filter((event) => {
                 if (event.genre === e && event.translation - containerWidth > -260 * 19) {
                     setViewed(viewed + totalInViewport);
                     setDistance(containerWidth);
-                    event.translation = event.translation - distance;
+                    event.translation = event.translation - containerWidth;
                     return event;
                 } else {
                     return event;
                 }
             });
         });
-
-        // setEvent((prevEvent) => {
-        //     return prevEvent.filter((event) => {
-        //         if (event.genre === e) {
-        //             setViewed(viewed + totalInViewport);
-        //             setDistance(distance - containerWidth);
-
-        //             return (event.translation = distance);
-        //         } else {
-        //             return true;
-        //         }
-        //     });
-        // });
     };
 
     // =================================================

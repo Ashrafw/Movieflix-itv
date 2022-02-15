@@ -10,6 +10,7 @@ export default function Navbar() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        setShowClass((prev) => (prev === true ? false : true));
         navigate(`/itv-website/search/${term}`);
     };
 

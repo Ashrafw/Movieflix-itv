@@ -1,7 +1,10 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useFetch } from '../hooks/useFetch';
+import _Poster from '../assets/poster.png';
+import _Backdrop from '../assets/backdrop.png';
 import uuid from 'react-uuid';
+import Suggestions from '../components/Suggestions';
 import './WatchMovie.css';
 
 export default function WatchMovie() {
@@ -10,31 +13,32 @@ export default function WatchMovie() {
     const Url = `https://api.themoviedb.org/3/movie/${id}?api_key=9c9a236c211df46e640b24f29796b6c0&language=en-US`;
     const { data, isPending, error } = useFetch(Url);
     const [imgBackdrop, setImgBackdrop] = useState(null);
+    const [movieGenre, setMovieGenre] = useState(null);
     const [imgPoster, setImgPoster] = useState(null);
     const [rate, setRate] = useState(0);
     const [starts, setStarts] = useState([]);
 
     useEffect(() => {
         if (data) {
-            console.log('hello');
+            // console.log('hello');
             setImgBackdrop(IMG_URL + data.backdrop_path);
             setImgPoster(IMG_URL + data.poster_path);
+            setMovieGenre(() =>
+                data.genres.length > 0 ? data.genres[0].name : data.genres.name
+            );
             setRate(Math.floor(data.vote_average / 2));
-            // setRate((prev) => prev / 2);
             let sizeArr = new Array(rate);
-            console.log(sizeArr);
-            // sizeArr.map((m) => <i class='fa-solid fa-star'></i>);
             for (let i = 0; i < rate; i++) {
-                sizeArr[i] = <i class='fa-solid fa-star'></i>;
+                sizeArr[i] = <i className='fa-solid fa-star'></i>;
             }
             if (rate < 5) {
                 for (let i = sizeArr.length; i < 5; i++) {
-                    sizeArr[i] = <i class='fa-solid fa-star gray'></i>;
+                    sizeArr[i] = <i className='fa-solid fa-star gray'></i>;
                 }
             }
+            console.log(movieGenre, data.id);
 
             setStarts(sizeArr);
-            console.log(starts);
         }
     }, [isPending, rate, data, error, imgBackdrop]);
 
@@ -45,15 +49,21 @@ export default function WatchMovie() {
             {data && (
                 <div className='main-movie' key={uuid()}>
                     <div className='movie-img'>
-                        <img src={imgBackdrop} alt='' />
+                        <img
+                            src={data.backdrop_path === null ? _Backdrop : imgBackdrop}
+                            alt=''
+                        />
                         <div className='play-icon'>
-                            <i class='fa-solid fa-play'></i>
+                            <i className='fa-solid fa-play'></i>
                         </div>
                     </div>
 
                     <div className='movie-info'>
                         {/* <div className='logo'>{data.id}</div> */}
-                        <img src={imgPoster} alt='' />
+                        <img
+                            src={data.poster_path === null ? _Poster : imgPoster}
+                            alt=''
+                        />
                         <div className='movie-info-main'>
                             <h1>{data.original_title}</h1>
                             <h2></h2>
@@ -87,6 +97,9 @@ export default function WatchMovie() {
                             </h3>
                         </div>
                     </div>
+                    <hr />
+                    <hr />
+                    <Suggestions movieGenre={movieGenre} />
                 </div>
             )}
         </>
