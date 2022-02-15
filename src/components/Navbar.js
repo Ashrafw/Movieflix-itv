@@ -9,6 +9,7 @@ export default function Navbar() {
     const searchInputFocus = useRef();
 
     const handleSubmit = (e) => {
+        e.preventDefault();
         navigate(`/itv-website/search/${term}`);
     };
 
@@ -42,7 +43,7 @@ export default function Navbar() {
                             // () => searchInputSet();
                         }}
                     >
-                        <i className={`fas fa-search `}></i>
+                        <i className={`fas fa-search`}></i>
                     </a>
                 </ul>
             </nav>
