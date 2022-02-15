@@ -49,12 +49,12 @@ export default function Search() {
         }
         if (error) {
             setTimeout(() => {
-                navigate('/movie');
+                navigate('/itv-website/movie');
             }, 2000);
         }
     }, [searchid, data, error, count, navigate, pageNumber]);
     const handleOnClick = (info) => {
-        navigate(`/movie/${info}`);
+        navigate(`/itv-website/movie/${info}`);
     };
 
     return (
