@@ -2,8 +2,6 @@
     background-color: #151824;
     position: relative;
     z-index: 9999;
-    margin-left: 1%;
-    margin-right: 1%;
 }
 nav {
     display: flex;
@@ -21,6 +19,8 @@ nav {
     /* background-color: #151824; */
     z-index: 99;
     min-height: 3rem;
+    margin-left: 1%;
+    margin-right: 1%;
 }
 
 nav ul {
