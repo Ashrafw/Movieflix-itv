@@ -1,13 +1,15 @@
 {
   "files": {
-    "main.css": "/itv-website/static/css/main.1241d651.css",
-    "main.js": "/itv-website/static/js/main.9a3a1d36.js",
+    "main.css": "/itv-website/static/css/main.be196444.css",
+    "main.js": "/itv-website/static/js/main.85f26dc2.js",
+    "static/media/poster.png": "/itv-website/static/media/poster.09b5d37e14899962e6a5.png",
+    "static/media/backdrop.png": "/itv-website/static/media/backdrop.9371c8142bf40bb8d2ec.png",
     "index.html": "/itv-website/index.html",
-    "main.1241d651.css.map": "/itv-website/static/css/main.1241d651.css.map",
-    "main.9a3a1d36.js.map": "/itv-website/static/js/main.9a3a1d36.js.map"
+    "main.be196444.css.map": "/itv-website/static/css/main.be196444.css.map",
+    "main.85f26dc2.js.map": "/itv-website/static/js/main.85f26dc2.js.map"
   },
   "entrypoints": [
-    "static/css/main.1241d651.css",
-    "static/js/main.9a3a1d36.js"
+    "static/css/main.be196444.css",
+    "static/js/main.85f26dc2.js"
   ]
 }
