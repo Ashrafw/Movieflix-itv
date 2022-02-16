@@ -173,7 +173,7 @@ export default function Suggestions({ movieGenre }) {
                                 }}
                             >
                                 <h3>{movie.title}</h3>
-                                <p>{movie.overview.substring(0, 160)}</p>
+                                <p>{movie.overview.substring(0, 90)}</p>
                                 <h5>Click for more...</h5>
                             </div>
                             <div className='movie-info'>

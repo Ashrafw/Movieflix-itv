@@ -134,10 +134,13 @@ nav ul a img {
     }
 }
 @media (max-width: 560px) {
-    .nav-left .nav-link-genre {
-        display: none;
-    }
     .navbar form input {
-        width: 360px;
+        width: 300px;
+    }
+}
+
+@media (max-width: 440px) {
+    .navbar form input {
+        width: 220px;
     }
 }

@@ -7,6 +7,9 @@ import uuid from 'react-uuid';
 import Suggestions from '../components/Suggestions';
 import './WatchMovie.css';
 
+import _Pg from '../assets/pg.png';
+import _Adult from '../assets/adult.png';
+
 export default function WatchMovie() {
     const { id } = useParams();
     const IMG_URL = 'https://image.tmdb.org/t/p/w1280';
@@ -66,26 +69,28 @@ export default function WatchMovie() {
 
                     <div className='movie-info'>
                         {/* <div className='logo'>{data.id}</div> */}
-                        <img
-                            src={data.poster_path === null ? _Poster : imgPoster}
-                            alt=''
-                        />
-                        <div className='movie-info-main'>
-                            <h1>{data.original_title}</h1>
-                            <h2></h2>
-                            <p>{data.overview}</p>
-                            <h3>Genres: </h3>
-                            <ul>
-                                {data.genres.map((gen) => (
-                                    <li>{gen.name}</li>
-                                ))}
-                            </ul>
+                        <div className='movie-info-1'>
+                            <img
+                                src={data.poster_path === null ? _Poster : imgPoster}
+                                alt=''
+                            />
+                            <div className='movie-info-main'>
+                                <h1>{data.original_title}</h1>
+                                <h2></h2>
+                                <p>{data.overview}</p>
+                                <h3>Genres: </h3>
+                                <ul>
+                                    {data.genres.map((gen) => (
+                                        <li>{gen.name}</li>
+                                    ))}
+                                </ul>
+                            </div>
                         </div>
                         <div className='movie-info-sec'>
                             {data.adult ? (
-                                <img src='/images/18.svg' alt='' />
+                                <img src={_Adult} alt='' />
                             ) : (
-                                <img src='/images/pg.png' alt='' />
+                                <img src={_Pg} alt='' />
                             )}
                             <ul>
                                 {starts.map((s) => (
@@ -103,7 +108,6 @@ export default function WatchMovie() {
                             </h3>
                         </div>
                     </div>
-                    <hr />
                     <hr />
                     <Suggestions movieGenre={movieGenre} />
                 </div>

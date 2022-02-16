@@ -158,7 +158,7 @@ export default function GenrePage() {
                             >
                                 <h3>{movie.title}</h3>
                                 <h5>{movie.release_date}</h5>
-                                <p>{movie.overview.substring(0, 300)}</p>
+                                <p>{movie.overview.substring(0, 140)}</p>
                                 <h5>Click for more...</h5>
                             </div>
                             <div className='movie-info'>
