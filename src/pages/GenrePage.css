@@ -149,6 +149,11 @@ button.active-page {
     color: #1e1e1e;
 }
 
+.marginBig {
+    margin-top: 100px;
+    margin-bottom: 100px;
+}
+
 @media (max-width: 1450px) {
     .genre-page {
         margin: 10px 5%;

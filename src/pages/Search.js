@@ -29,6 +29,7 @@ export default function Search() {
     const [clickedId, setClickedId] = useState('');
     const navigate = useNavigate();
     const [count, setCount] = useState(1);
+    const [searchFound, setSearchFound] = useState(false);
 
     const [pageNumber, setPageNumber] = useState(1);
     const [pageInit, setPageInit] = useState(1);
@@ -38,8 +39,7 @@ export default function Search() {
     useEffect(() => {
         // setSelectedGenreUrl(list.url + '&page=' + pageNumber);
         setSelectedGenreUrl(SEARCH_URL + searchid + '&page=' + pageNumber);
-        console.log(selectedGenreUrl);
-        if (data) {
+        if (data && data.results.length != 0) {
             setTitle(data.results[count].title);
             setPosterPath(IMG_URL + data.results[count].poster_path);
             setBackdropPath(IMG_URL + data.results[count].backdrop_path);
@@ -48,6 +48,9 @@ export default function Search() {
             setOverview(data.results[count].overview);
             // setTotalPageNumberUrl(data.total_pages);
             setTotalPages(data.total_pages > 500 ? 500 : data.total_pages);
+            setSearchFound(true);
+        } else if (data && data.results.length === 0) {
+            setSearchFound(false);
         }
         if (error) {
             setTimeout(() => {
@@ -61,32 +64,34 @@ export default function Search() {
 
     return (
         <div className='genre-page container-s'>
-            <div className='genre-page-info searchId'>
-                {isPending && <div>Loading...</div>}
-                {error && <div>{error}</div>}
-                {data && (
-                    <>
-                        <h1>
-                            Search result for: <span>{searchid}</span>
-                        </h1>
-                        <Pagination
-                            pageNumber={pageNumber}
-                            setPageNumber={setPageNumber}
-                            pageInit={pageInit}
-                            setPageInit={setPageInit}
-                            totalPages={totalPages}
-                        />
-                    </>
-                )}
-            </div>
+            {searchFound && (
+                <>
+                    <div className='genre-page-info searchId'>
+                        {isPending && <div>Loading...</div>}
+                        {error && <div>{error}</div>}
+                        {data && (
+                            <>
+                                <h1>
+                                    Search result for: <span>{searchid}</span>
+                                </h1>
+                                <Pagination
+                                    pageNumber={pageNumber}
+                                    setPageNumber={setPageNumber}
+                                    pageInit={pageInit}
+                                    setPageInit={setPageInit}
+                                    totalPages={totalPages}
+                                />
+                            </>
+                        )}
+                    </div>
 
-            <div className='genre-section'>
-                {isPending && <div>Loading...</div>}
-                {error && <div>{error}</div>}
-                {data &&
-                    data.results.map((movie) => (
-                        <div className='movie' key={uuid()}>
-                            {/* <OverlayMovie
+                    <div className='genre-section'>
+                        {isPending && <div>Loading...</div>}
+                        {error && <div>{error}</div>}
+                        {data &&
+                            data.results.map((movie) => (
+                                <div className='movie' key={uuid()}>
+                                    {/* <OverlayMovie
                                 title={movie.title}
                                 date={movie.release_date}
                                 overview={movie.overview}
@@ -94,43 +99,52 @@ export default function Search() {
                                 setClickedValue={setClickedValue}
                                 info={clickedId === movie.title ? true : false}
                             /> */}
-                            <img
-                                src={
-                                    movie.poster_path === null
-                                        ? _Poster
-                                        : IMG_URL + movie.poster_path
-                                }
-                                alt=''
-                                srcSet=''
-                                onClick={(e) => {
-                                    if (!clickedValue) {
-                                        setClickedValue(true);
-                                        setClickedId(movie.title);
-                                    } else {
-                                        setClickedId('');
-                                        setClickedValue(false);
-                                    }
-                                }}
-                            />
-                            <div
-                                className='overlay-init'
-                                onClick={() => handleOnClick(movie.id)}
-                            >
-                                <h3>{movie.title}</h3>
-                                <h5>{movie.release_date}</h5>
-                                <p>{movie.overview.substring(0, 300)}</p>
-                                <h5>Click for more...</h5>
-                            </div>
-                            <div className='movie-info'>
-                                <h5>{movie.title}</h5>
-                                <div className='movie-info-sec'>
-                                    <p>{movie.release_date}</p>
-                                    <span>{movie.vote_average}</span>
+                                    <img
+                                        src={
+                                            movie.poster_path === null
+                                                ? _Poster
+                                                : IMG_URL + movie.poster_path
+                                        }
+                                        alt=''
+                                        srcSet=''
+                                        onClick={(e) => {
+                                            if (!clickedValue) {
+                                                setClickedValue(true);
+                                                setClickedId(movie.title);
+                                            } else {
+                                                setClickedId('');
+                                                setClickedValue(false);
+                                            }
+                                        }}
+                                    />
+                                    <div
+                                        className='overlay-init'
+                                        onClick={() => handleOnClick(movie.id)}
+                                    >
+                                        <h3>{movie.title}</h3>
+                                        <h5>{movie.release_date}</h5>
+                                        <p>{movie.overview.substring(0, 300)}</p>
+                                        <h5>Click for more...</h5>
+                                    </div>
+                                    <div className='movie-info'>
+                                        <h5>{movie.title}</h5>
+                                        <div className='movie-info-sec'>
+                                            <p>{movie.release_date}</p>
+                                            <span>{movie.vote_average}</span>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                        </div>
-                    ))}
-            </div>
+                            ))}
+                    </div>
+                </>
+            )}
+            {!searchFound && (
+                <div className='genre-page-info searchId marginBig'>
+                    <h1>
+                        No Search results for: <span>{searchid}</span>
+                    </h1>
+                </div>
+            )}
         </div>
     );
 }
