@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { useFetch } from '../hooks/useFetch';
 import _Poster from '../assets/poster.png';
 import _Backdrop from '../assets/backdrop.png';
@@ -17,6 +17,7 @@ export default function WatchMovie() {
     const [imgPoster, setImgPoster] = useState(null);
     const [rate, setRate] = useState(0);
     const [starts, setStarts] = useState([]);
+    const navigate = useNavigate();
 
     useEffect(() => {
         if (data) {
@@ -39,6 +40,11 @@ export default function WatchMovie() {
             console.log(movieGenre, data.id);
 
             setStarts(sizeArr);
+        }
+        if (error) {
+            setTimeout(() => {
+                navigate('/itv-website/');
+            }, 3000);
         }
     }, [isPending, rate, data, error, imgBackdrop]);
 

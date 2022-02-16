@@ -42,6 +42,11 @@ export default function MainLanding() {
             setOverview(data.results[count].overview);
             setMovieId(data.results[count].id);
         }
+        if (error) {
+            setTimeout(() => {
+                navigate('/itv-website/');
+            }, 3000);
+        }
         const interval = setInterval(() => {
             if (!isShown) {
                 setSecond(second + 1);

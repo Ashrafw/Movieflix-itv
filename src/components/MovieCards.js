@@ -32,6 +32,11 @@ export default function MovieCards({ url }) {
             setDate(data.results[count].release_date);
             setOverview(data.results[count].overview);
         }
+        if (error) {
+            setTimeout(() => {
+                navigate('/itv-website/');
+            }, 3000);
+        }
     }, [data, count, isPending, error]);
 
     const handleOnClick = (info) => {

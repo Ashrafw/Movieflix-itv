@@ -95,7 +95,7 @@ export default function GenrePage() {
         if (error) {
             setTimeout(() => {
                 navigate('/itv-website/');
-            }, 2000);
+            }, 3000);
         }
     }, [id, data, error, pageNumber, navigate, count]);
 

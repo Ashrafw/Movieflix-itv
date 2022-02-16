@@ -50,7 +50,7 @@ export default function Search() {
         if (error) {
             setTimeout(() => {
                 navigate('/itv-website');
-            }, 2000);
+            }, 3000);
         }
     }, [searchid, data, error, count, navigate, pageNumber]);
     const handleOnClick = (info) => {
