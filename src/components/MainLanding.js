@@ -24,16 +24,12 @@ export default function MainLanding() {
 
     const [threeMovie, setThreeMovie] = useState([]);
 
-    // console.log(threeMovie);
-
     useEffect(() => {
         if (data) {
             while (threeMovie.length < 3) {
                 var r = Math.floor(Math.random() * 19) + 1;
                 if (threeMovie.indexOf(r) === -1) threeMovie.push(r);
-                // console.log(threeMovie);
             }
-            // console.log(IMG_URL + data.results[count].backdrop_path);
             setTitle(data.results[count].title);
             setPosterPath(IMG_URL + data.results[count].poster_path);
             setBackdropPath(IMG_URL + data.results[count].backdrop_path);
@@ -198,7 +194,7 @@ export default function MainLanding() {
                                             <p>
                                                 {data.results[
                                                     movieNum
-                                                ].overview.substring(0, 200)}
+                                                ].overview.substring(0, 140)}
                                             </p>
                                             <p>Click for more...</p>
                                         </div>

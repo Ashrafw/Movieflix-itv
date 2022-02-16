@@ -22,21 +22,33 @@ export default function Navbar() {
                         {/* <img src='images/itv-emblem.png' alt='' srcset='' /> */}
                         Movie<span>Flix</span>
                     </Link>
-                    <Link to='/itv-website/'>TV shows</Link>
-                    <Link to='/itv-website/genre/1'>Action</Link>
-                    <Link to='/itv-website/genre/2'>Drama</Link>
-                    <Link to='/itv-website/genre/3'>Crime</Link>
-                    <Link to='/itv-website/genre/5'>Romance</Link>
-                    <Link to='/itv-website/genre/6'>Thriller</Link>
-                    <Link to='/itv-website/genre/4'>Kids</Link>
+                    {/* <Link to='/itv-website/'>TV shows</Link> */}
+                    <Link className='nav-link-genre' to='/itv-website/genre/1'>
+                        Action
+                    </Link>
+                    <Link className='nav-link-genre' to='/itv-website/genre/2'>
+                        Drama
+                    </Link>
+                    <Link className='nav-link-genre' to='/itv-website/genre/3'>
+                        Crime
+                    </Link>
+                    <Link className='nav-link-genre' to='/itv-website/genre/5'>
+                        Romance
+                    </Link>
+                    <Link className='nav-link-genre' to='/itv-website/genre/6'>
+                        Thriller
+                    </Link>
+                    <Link className='nav-link-genre' to='/itv-website/genre/4'>
+                        Kids
+                    </Link>
                 </ul>
                 <ul className='nav-right'>
                     {/* <Link to='/'>britbox</Link>
                     <Link to='/'>watch ad-free now</Link> */}
-                    <Link to='/itv-website/'>
+                    {/* <Link to='/itv-website/'>
                         {' '}
                         Sign In <i className='fas fa-user-circle '></i>
-                    </Link>
+                    </Link> */}
                     <a
                         className={showClass ? 'show' : ''}
                         onClick={() => {

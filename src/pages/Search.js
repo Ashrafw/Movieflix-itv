@@ -6,6 +6,8 @@ import { useFetch } from '../hooks/useFetch';
 import './GenrePage.css';
 import Pagination from '../components/Pagination';
 import uuid from 'react-uuid';
+import _Poster from '../assets/poster.png';
+import _Backdrop from '../assets/backdrop.png';
 
 const SEARCH_URL =
     'https://api.themoviedb.org/3/search/movie?api_key=9c9a236c211df46e640b24f29796b6c0&query=';
@@ -93,7 +95,11 @@ export default function Search() {
                                 info={clickedId === movie.title ? true : false}
                             /> */}
                             <img
-                                src={IMG_URL + movie.poster_path}
+                                src={
+                                    movie.poster_path === null
+                                        ? _Poster
+                                        : IMG_URL + movie.poster_path
+                                }
                                 alt=''
                                 srcSet=''
                                 onClick={(e) => {

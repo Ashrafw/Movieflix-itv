@@ -95,7 +95,7 @@ export default function Suggestions({ movieGenre }) {
     const navigate = useNavigate();
     const [count, setCount] = useState(1);
     const [show, setShow] = useState(false);
-    const [pageNumber, setPageNumber] = useState(1);
+    const [pageNumber, setPageNumber] = useState(Math.floor(Math.random() * 10 + 1));
     const [genreName, setGenreName] = useState('');
 
     const { data, isPending, error } = useFetch(selectedGenreUrl);
@@ -147,14 +147,6 @@ export default function Suggestions({ movieGenre }) {
                 {data &&
                     data.results.slice(0, 10).map((movie) => (
                         <div className='movie' key={uuid()}>
-                            {/* <OverlayMovie
-                                title={movie.title}
-                                date={movie.release_date}
-                                overview={movie.overview}
-                                clickedValue={clickedValue}
-                                setClickedValue={setClickedValue}
-                                info={clickedId === movie.title ? true : false}
-                            /> */}
                             <img
                                 src={
                                     movie.poster_path === null
@@ -173,7 +165,6 @@ export default function Suggestions({ movieGenre }) {
                                     }
                                 }}
                             />
-                            {/* <img src='/images/poster.png' alt='' srcSet='' /> */}
                             <div
                                 className='overlay-init'
                                 onClick={() => {

@@ -148,7 +148,7 @@
     font-family: 'Open Sans', sans-serif;
     font-size: 2rem;
     color: white;
-    font-weight: 400;
+    font-weight: 600;
     margin: 20px 5px 30px 0;
     position: relative;
     cursor: pointer;
@@ -157,7 +157,7 @@
 }
 
 .genre-titles a:hover {
-    color: rgb(182, 2, 2);
+    color: #19bfc8;
 }
 
 .genre-titles .explore {
@@ -197,8 +197,8 @@
         transform: translate(165%, 50%);
     }
 }
-/* 
-@media (max-width: 1850px) {
+
+/* @media (max-width: 1850px) {
     .genres {
         width: 95%;
         margin: auto;
@@ -236,7 +236,7 @@
     .genres .posters .poster:nth-last-child(2) {
         display: none;
     }
-    
+
     .genres .posters .poster {
         width: 165px;
     }
@@ -269,9 +269,9 @@
     .genres .posters .poster:last-child {
         display: none;
     }
-} */
+}
 
-/* @media (max-width: 800px) {
+@media (max-width: 800px) {
     .genres {
         width: 95%;
         margin: auto;
@@ -285,8 +285,8 @@
     .genres .posters .poster:last-child {
         display: none;
     }
-} */
-/* @media (max-width: 547px) {
+}
+@media (max-width: 547px) {
     .genres .posters {
         display: grid;
         grid-template-columns: repeat(4, 1fr);

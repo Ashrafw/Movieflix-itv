@@ -115,8 +115,29 @@ nav ul a img {
     font-size: 1rem;
     padding: 8px 16px;
     border: none;
-    min-width: 980px;
+    width: 980px;
 }
 .navbar form input:focus {
     outline: none;
+}
+@media (max-width: 1200px) {
+    .navbar form input {
+        width: 700px;
+    }
+}
+@media (max-width: 819px) {
+    .nav-left .nav-link-genre {
+        display: none;
+    }
+    .navbar form input {
+        width: 400px;
+    }
+}
+@media (max-width: 560px) {
+    .nav-left .nav-link-genre {
+        display: none;
+    }
+    .navbar form input {
+        width: 360px;
+    }
 }
