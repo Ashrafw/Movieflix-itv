@@ -48,15 +48,41 @@ const genreObj = [
         genre: 'Comedy',
         url: 'https://api.themoviedb.org/3/discover/movie?with_genres=35&sort_by=popularity.desc&api_key=9c9a236c211df46e640b24f29796b6c0&page=',
     },
-
     {
         id: '8',
         genre: 'Music',
         url: 'https://api.themoviedb.org/3/discover/movie?with_genres=10402&sort_by=popularity.desc&api_key=9c9a236c211df46e640b24f29796b6c0&page=',
     },
+    {
+        id: '9',
+        genre: 'Animation',
+        url: 'https://api.themoviedb.org/3/discover/movie?with_genres=16&sort_by=popularity.desc&api_key=9c9a236c211df46e640b24f29796b6c0&page=',
+    },
+    {
+        id: '10',
+        genre: 'Family',
+        url: 'https://api.themoviedb.org/3/discover/movie?with_genres=10751&sort_by=popularity.desc&api_key=9c9a236c211df46e640b24f29796b6c0&page=',
+    },
+    {
+        id: '11',
+        genre: 'Western',
+        url: 'https://api.themoviedb.org/3/discover/movie?with_genres=37&sort_by=popularity.desc&api_key=9c9a236c211df46e640b24f29796b6c0&page=',
+    },
+    {
+        id: '12',
+        genre: 'War',
+        url: 'https://api.themoviedb.org/3/discover/movie?with_genres=10752&sort_by=popularity.desc&api_key=9c9a236c211df46e640b24f29796b6c0&page=',
+    },
+    {
+        id: '13',
+        genre: 'History',
+        url: 'https://api.themoviedb.org/3/discover/movie?with_genres=36&sort_by=popularity.desc&api_key=9c9a236c211df46e640b24f29796b6c0&page=',
+    },
 ];
 export default function Suggestions({ movieGenre }) {
     const IMG_URL = 'https://image.tmdb.org/t/p/w1280';
+    const urlElse =
+        'https://api.themoviedb.org/3/discover/movie?with_genres=28&sort_by=popularity.desc&api_key=9c9a236c211df46e640b24f29796b6c0&page=';
     const [selectedGenreUrl, setSelectedGenreUrl] = useState('');
     const [title, setTitle] = useState('');
     const [posterPath, setPosterPath] = useState('');
@@ -76,14 +102,24 @@ export default function Suggestions({ movieGenre }) {
     const [clickedValue, setClickedValue] = useState(false);
     const [clickedId, setClickedId] = useState('');
 
+    const [matchedGenre, setMatchedGenre] = useState(false);
+
     useEffect(() => {
         genreObj.map((list) => {
             if (list.genre === movieGenre) {
                 setSelectedGenreUrl(list.url + pageNumber);
                 console.log(list.url, movieGenre);
-                setGenreName(list.genre);
+                setGenreName(movieGenre);
+                setMatchedGenre(true);
+            } else {
+                setGenreName('Action');
             }
         });
+        if (!matchedGenre) {
+            setSelectedGenreUrl(urlElse + pageNumber);
+            setGenreName('Action');
+            setMatchedGenre(false);
+        }
         if (data) {
             setTitle(data.results[count].title);
             setPosterPath(IMG_URL + data.results[count].poster_path);
@@ -106,7 +142,7 @@ export default function Suggestions({ movieGenre }) {
 
     return (
         <div className='suggestions'>
-            <h1>More {movieGenre} movies</h1>
+            <h1>More {genreName} movies</h1>
             <div className='suggestion-movies'>
                 {data &&
                     data.results.slice(0, 10).map((movie) => (
@@ -138,18 +174,17 @@ export default function Suggestions({ movieGenre }) {
                                 }}
                             />
                             {/* <img src='/images/poster.png' alt='' srcSet='' /> */}
-                            {/* <div
-                            className='overlay-init'
-                            onClick={() => {
-                                console.log(movie.poster_path);
-                                handleOnClick(movie.id);
-                            }}
-                        >
-                            <h3>{movie.title}</h3>
-                            <h5>{movie.release_date}</h5>
-                            <p>{movie.overview.substring(0, 300)}</p>
-                            <h5>Click for more...</h5>
-                        </div> */}
+                            <div
+                                className='overlay-init'
+                                onClick={() => {
+                                    console.log(movie.poster_path);
+                                    handleOnClick(movie.id);
+                                }}
+                            >
+                                <h3>{movie.title}</h3>
+                                <p>{movie.overview.substring(0, 160)}</p>
+                                <h5>Click for more...</h5>
+                            </div>
                             <div className='movie-info'>
                                 <h5>{movie.title}</h5>
                                 <div className='movie-info-sec'>
