@@ -94,13 +94,13 @@ export default function GenrePage() {
         }
         if (error) {
             setTimeout(() => {
-                navigate('/itv-website/');
+                navigate('/MovieflixV2/');
             }, 3000);
         }
     }, [id, data, error, pageNumber, navigate, count]);
 
     const handleOnClick = (info) => {
-        navigate(`/itv-website/movie/${info}`);
+        navigate(`/MovieflixV2/movie/${info}`);
     };
 
     return (

@@ -46,7 +46,7 @@ export default function WatchMovie() {
         }
         if (error) {
             setTimeout(() => {
-                navigate('/itv-website/');
+                navigate('/MovieflixV2/');
             }, 3000);
         }
     }, [isPending, rate, data, error, imgBackdrop]);

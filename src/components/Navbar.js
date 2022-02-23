@@ -11,41 +11,41 @@ export default function Navbar() {
     const handleSubmit = (e) => {
         e.preventDefault();
         setShowClass((prev) => (prev === true ? false : true));
-        navigate(`/itv-website/search/${term}`);
+        navigate(`/MovieflixV2/search/${term}`);
     };
 
     return (
         <div className='navbar'>
             <nav className='container'>
                 <ul className='nav-left'>
-                    <Link to='/itv-website/' className='logo-site'>
+                    <Link to='/MovieflixV2/' className='logo-site'>
                         {/* <img src='images/itv-emblem.png' alt='' srcset='' /> */}
                         Movie<span>Flix</span>
                     </Link>
-                    {/* <Link to='/itv-website/'>TV shows</Link> */}
-                    <Link className='nav-link-genre' to='/itv-website/genre/1'>
+                    {/* <Link to='/MovieflixV2/'>TV shows</Link> */}
+                    <Link className='nav-link-genre' to='/MovieflixV2/genre/1'>
                         Action
                     </Link>
-                    <Link className='nav-link-genre' to='/itv-website/genre/2'>
+                    <Link className='nav-link-genre' to='/MovieflixV2/genre/2'>
                         Drama
                     </Link>
-                    <Link className='nav-link-genre' to='/itv-website/genre/3'>
+                    <Link className='nav-link-genre' to='/MovieflixV2/genre/3'>
                         Crime
                     </Link>
-                    <Link className='nav-link-genre' to='/itv-website/genre/5'>
+                    <Link className='nav-link-genre' to='/MovieflixV2/genre/5'>
                         Romance
                     </Link>
-                    <Link className='nav-link-genre' to='/itv-website/genre/6'>
+                    <Link className='nav-link-genre' to='/MovieflixV2/genre/6'>
                         Thriller
                     </Link>
-                    <Link className='nav-link-genre' to='/itv-website/genre/4'>
+                    <Link className='nav-link-genre' to='/MovieflixV2/genre/4'>
                         Kids
                     </Link>
                 </ul>
                 <ul className='nav-right'>
                     {/* <Link to='/'>britbox</Link>
                     <Link to='/'>watch ad-free now</Link> */}
-                    {/* <Link to='/itv-website/'>
+                    {/* <Link to='/MovieflixV2/'>
                         {' '}
                         Sign In <i className='fas fa-user-circle '></i>
                     </Link> */}

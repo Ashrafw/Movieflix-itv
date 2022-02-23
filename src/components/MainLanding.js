@@ -40,7 +40,7 @@ export default function MainLanding() {
         }
         if (error) {
             setTimeout(() => {
-                navigate('/itv-website/');
+                navigate('/MovieflixV2/');
             }, 3000);
         }
         const interval = setInterval(() => {
@@ -58,7 +58,7 @@ export default function MainLanding() {
     }, [data, count, second, isPending, error, isShown]);
 
     const handleOnClick = (info) => {
-        navigate(`/itv-website/movie/${info}`);
+        navigate(`/MovieflixV2/movie/${info}`);
     };
     return (
         <div className='main-landing'>

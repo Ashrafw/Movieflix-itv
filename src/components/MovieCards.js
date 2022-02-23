@@ -34,13 +34,13 @@ export default function MovieCards({ url }) {
         }
         if (error) {
             setTimeout(() => {
-                navigate('/itv-website/');
+                navigate('/MovieflixV2/');
             }, 3000);
         }
     }, [data, count, isPending, error]);
 
     const handleOnClick = (info) => {
-        navigate(`/itv-website/movie/${info}`);
+        navigate(`/MovieflixV2/movie/${info}`);
     };
     return (
         <>

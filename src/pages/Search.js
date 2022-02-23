@@ -54,12 +54,12 @@ export default function Search() {
         }
         if (error) {
             setTimeout(() => {
-                navigate('/itv-website');
+                navigate('/MovieflixV2');
             }, 3000);
         }
     }, [searchid, data, error, count, navigate, pageNumber]);
     const handleOnClick = (info) => {
-        navigate(`/itv-website/movie/${info}`);
+        navigate(`/MovieflixV2/movie/${info}`);
     };
 
     return (

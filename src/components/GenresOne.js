@@ -154,7 +154,7 @@ export default function Genres() {
         <>
             <div className='genres' key={section.genre} id={section.genre}>
                 <div className='genre-titles'>
-                    <Link to={`/itv-website/genre/${section.id}`}>
+                    <Link to={`/MovieflixV2/genre/${section.id}`}>
                         {section.genre}
                         <div className='explore'>
                             Explore <i className='fas fa-chevron-right'></i>
